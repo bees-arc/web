@@ -67,7 +67,7 @@ export const AwardsSection: React.FC = () => {
         const source = ctx.createBufferSource();
         const gain = ctx.createGain();
         source.buffer = audioBufferRef.current;
-        gain.gain.value = 0.85;
+        gain.gain.value = 1.0;
         source.connect(gain);
         gain.connect(ctx.destination);
         source.start(0);
@@ -77,7 +77,7 @@ export const AwardsSection: React.FC = () => {
       // Always fallback to the same original MP3 via new Audio()
       // Works on every browser when called directly inside touchstart / click
       const audio = new Audio(MP3);
-      audio.volume = 0.85;
+      audio.volume = 1.0;
       audio.currentTime = 0;
       audio.play().catch(() => {});
     } catch (_) {}
