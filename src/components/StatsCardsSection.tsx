@@ -1,0 +1,209 @@
+import React, { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { OutcrowdLottie } from './OutcrowdLottie';
+
+gsap.registerPlugin(ScrollTrigger);
+
+export const StatsCardsSection: React.FC = () => {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const [activeHover, setActiveHover] = useState<number | null>(null);
+
+  const headlineText = "We prove, design, implement, and market your idea with absolute transparency and efficiency in it's core";
+  const words = headlineText.split(" ");
+
+  useEffect(() => {
+    if (!headingRef.current) return;
+
+    const wordElements = headingRef.current.querySelectorAll('.scrub-word');
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        wordElements,
+        { opacity: 0.15, y: 8, color: '#94A3B8' },
+        {
+          opacity: 1,
+          y: 0,
+          color: '#0F172A',
+          stagger: 0.1,
+          ease: 'power1.out',
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: 'top 85%',
+            end: 'bottom 40%',
+            scrub: 0.8,
+          },
+        }
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section className="py-20 md:py-32 bg-white border-y border-slate-200/60 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Outcrowd Character/Word Scrubbing Scroll Heading */}
+        <div className="max-w-4xl mb-20">
+          <h2
+            ref={headingRef}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.12] tracking-tight"
+          >
+            {words.map((word, idx) => (
+              <span key={idx} className="scrub-word inline-block mr-[0.25em] transition-colors duration-200">
+                {word}
+              </span>
+            ))}
+          </h2>
+        </div>
+
+        {/* 4 Stats Cards Grid with Exact Outcrowd Lottie Animations */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          {/* Card 1: $300m + Chat Popup image overlay */}
+          <div
+            onMouseEnter={() => setActiveHover(1)}
+            onMouseLeave={() => setActiveHover(null)}
+            className={`relative rounded-3xl p-7 transition-all duration-300 border flex flex-col justify-between overflow-hidden cursor-pointer ${
+              activeHover === 1
+                ? 'bg-white border-indigo-300 shadow-2xl shadow-indigo-500/10 -translate-y-1.5'
+                : 'bg-[#FAFAFD] border-slate-200/80 hover:border-slate-300'
+            }`}
+          >
+            <div className="mb-6">
+              {/* Chat Popup Image overlay */}
+              <div className="relative mb-6 overflow-hidden rounded-2xl border border-slate-200/80 shadow-md group">
+                <img
+                  src="https://cdn.prod.website-files.com/667a7576e7e7ef3ba89b3f2a/66c83397d4e9225b89268b44_chat%20popup.webp"
+                  alt="Chat Popup"
+                  className="w-full h-36 object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute top-2 right-2 bg-emerald-500 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full shadow-xs">
+                  +$300M FUNDING
+                </div>
+              </div>
+
+              <h3 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight mb-3">
+                $300m
+              </h3>
+              <p className="text-xs sm:text-sm font-semibold text-slate-600 leading-relaxed">
+                In funding clients raised owing to our design work
+              </p>
+            </div>
+
+            <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-indigo-600">
+              <span>Investor Pitch Design</span>
+              <span>40+ Startups</span>
+            </div>
+          </div>
+
+          {/* Card 2: 60+ + Exact Outcrowd Webflow Lottie Vidget 13 Animation */}
+          <div
+            onMouseEnter={() => setActiveHover(2)}
+            onMouseLeave={() => setActiveHover(null)}
+            className={`relative rounded-3xl p-7 transition-all duration-300 border flex flex-col justify-between overflow-hidden cursor-pointer ${
+              activeHover === 2
+                ? 'bg-white border-purple-300 shadow-2xl shadow-purple-500/10 -translate-y-1.5'
+                : 'bg-[#FAFAFD] border-slate-200/80 hover:border-slate-300'
+            }`}
+          >
+            <div className="mb-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">
+                  60+
+                </h3>
+
+                {/* Exact Outcrowd Lottie Widget 13 Animation */}
+                <OutcrowdLottie
+                  url="https://cdn.prod.website-files.com/667a7576e7e7ef3ba89b3f2a/66b4c978a3d27cd1602dbf83_vidget%2013.json"
+                  className="w-20 h-20"
+                />
+              </div>
+
+              <p className="text-xs sm:text-sm font-semibold text-slate-600 leading-relaxed mt-4">
+                World’s biggest international design awards won
+              </p>
+            </div>
+
+            <div className="pt-3 border-t border-slate-100 flex gap-1.5 flex-wrap">
+              <span className="px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 text-[10px] font-bold">
+                ★ Red Dot 2026
+              </span>
+              <span className="px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-bold">
+                ★ 12x Awwwards
+              </span>
+            </div>
+          </div>
+
+          {/* Card 3: 100M + Exact Outcrowd Webflow Lottie Vidget 14 Animation */}
+          <div
+            onMouseEnter={() => setActiveHover(3)}
+            onMouseLeave={() => setActiveHover(null)}
+            className={`relative rounded-3xl p-7 transition-all duration-300 border flex flex-col justify-between overflow-hidden cursor-pointer ${
+              activeHover === 3
+                ? 'bg-white border-blue-300 shadow-2xl shadow-blue-500/10 -translate-y-1.5'
+                : 'bg-[#FAFAFD] border-slate-200/80 hover:border-slate-300'
+            }`}
+          >
+            <div className="mb-6">
+              {/* Exact Outcrowd Lottie Widget 14 Animation above 100M */}
+              <div className="w-full h-24 mb-4 flex items-center justify-center">
+                <OutcrowdLottie
+                  url="https://cdn.prod.website-files.com/667a7576e7e7ef3ba89b3f2a/66b4c97780a7b9ca43accca2_vidget%2014.json"
+                  className="w-24 h-24"
+                />
+              </div>
+
+              <h3 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight mb-3">
+                100M
+              </h3>
+              <p className="text-xs sm:text-sm font-semibold text-slate-600 leading-relaxed">
+                Active users experiencing our design every day via products we made
+              </p>
+            </div>
+
+            <div className="pt-3 border-t border-slate-100 text-[11px] font-extrabold text-blue-600">
+              Global Scale Products
+            </div>
+          </div>
+
+          {/* Card 4: 24% + Exact Outcrowd Webflow Lottie Vidget 15 Animation */}
+          <div
+            onMouseEnter={() => setActiveHover(4)}
+            onMouseLeave={() => setActiveHover(null)}
+            className={`relative rounded-3xl p-7 transition-all duration-300 border flex flex-col justify-between overflow-hidden cursor-pointer ${
+              activeHover === 4
+                ? 'bg-white border-pink-300 shadow-2xl shadow-pink-500/10 -translate-y-1.5'
+                : 'bg-[#FAFAFD] border-slate-200/80 hover:border-slate-300'
+            }`}
+          >
+            <div className="mb-6">
+              <div className="flex items-center justify-between mb-4">
+                {/* Exact Outcrowd Lottie Widget 15 Animation */}
+                <OutcrowdLottie
+                  url="https://cdn.prod.website-files.com/667a7576e7e7ef3ba89b3f2a/66b4c977eb0e529c9b631be6_vidget%2015.json"
+                  className="w-16 h-16"
+                />
+
+                <h3 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">
+                  24%
+                </h3>
+              </div>
+
+              <p className="text-xs sm:text-sm font-semibold text-slate-600 leading-relaxed mt-4">
+                Of total marketing budgets converted into sales with our branding & materials
+              </p>
+            </div>
+
+            <div className="pt-3 border-t border-slate-100 text-[11px] font-extrabold text-rose-600 flex items-center justify-between">
+              <span>Conversion ROI</span>
+              <span>+3.4x Growth</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
