@@ -14,45 +14,73 @@ interface InnovationAward {
 export const AwardsSection: React.FC = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
-  const audioUnlocked = useRef(false);
+  const audioBufferRef = useRef<AudioBuffer | null>(null);
+  const isUnlocked = useRef(false);
 
-  // Pre-warm audio on first user gesture so MP3 plays without browser permission prompt
   useEffect(() => {
+    // MUST be synchronous — iOS Safari only allows AudioContext.resume()
+    // inside the same call stack as the user gesture (touchstart/pointerdown)
     const unlock = () => {
-      if (audioUnlocked.current) return;
-      audioUnlocked.current = true;
-      // Unlock via silent AudioContext resume
-      if (!audioCtxRef.current) {
-        audioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
-      }
-      if (audioCtxRef.current.state === 'suspended') {
-        audioCtxRef.current.resume();
-      }
-      // Also warm up a silent <audio> so subsequent new Audio() calls work
-      const silent = new Audio('https://dl.dropboxusercontent.com/s/03lxlbaek2ye22m/click_min.mp3');
-      silent.volume = 0;
-      silent.play().catch(() => {});
+      if (isUnlocked.current) return;
+      isUnlocked.current = true;
+
+      try {
+        if (!audioCtxRef.current) {
+          audioCtxRef.current = new (
+            window.AudioContext || (window as any).webkitAudioContext
+          )();
+        }
+        const ctx = audioCtxRef.current;
+
+        // Synchronous resume + silent buffer = unlocks iOS + Chrome in one gesture
+        ctx.resume();
+        const silentBuf = ctx.createBuffer(1, 1, ctx.sampleRate);
+        const silentSrc = ctx.createBufferSource();
+        silentSrc.buffer = silentBuf;
+        silentSrc.connect(ctx.destination);
+        silentSrc.start(0);
+
+        // Async preload MP3 as AudioBuffer (runs after unlock, no gesture needed)
+        fetch('https://dl.dropboxusercontent.com/s/03lxlbaek2ye22m/click_min.mp3')
+          .then(r => r.arrayBuffer())
+          .then(ab => ctx.decodeAudioData(ab))
+          .then(buf => { audioBufferRef.current = buf; })
+          .catch(() => {});
+      } catch (_) {}
     };
+
+    window.addEventListener('pointerdown', unlock, { once: true });
     window.addEventListener('touchstart', unlock, { once: true, passive: true });
-    window.addEventListener('click', unlock, { once: true });
-    window.addEventListener('scroll', unlock, { once: true, passive: true });
     return () => {
+      window.removeEventListener('pointerdown', unlock);
       window.removeEventListener('touchstart', unlock);
-      window.removeEventListener('click', unlock);
-      window.removeEventListener('scroll', unlock);
     };
   }, []);
 
-  // Original MP3 hover sound (Volume 0.85)
   const playHoverSound = useCallback(() => {
+    const MP3 = 'https://dl.dropboxusercontent.com/s/03lxlbaek2ye22m/click_min.mp3';
     try {
-      const audio = new Audio('https://dl.dropboxusercontent.com/s/03lxlbaek2ye22m/click_min.mp3');
+      const ctx = audioCtxRef.current;
+
+      // If AudioContext is running and MP3 is preloaded → play from cache (instant)
+      if (ctx && ctx.state === 'running' && audioBufferRef.current) {
+        const source = ctx.createBufferSource();
+        const gain = ctx.createGain();
+        source.buffer = audioBufferRef.current;
+        gain.gain.value = 0.85;
+        source.connect(gain);
+        gain.connect(ctx.destination);
+        source.start(0);
+        return;
+      }
+
+      // Always fallback to the same original MP3 via new Audio()
+      // Works on every browser when called directly inside touchstart / click
+      const audio = new Audio(MP3);
       audio.volume = 0.85;
       audio.currentTime = 0;
       audio.play().catch(() => {});
-    } catch (e) {
-      // Silent fail
-    }
+    } catch (_) {}
   }, []);
 
   const innovationAwards: InnovationAward[] = [
@@ -149,7 +177,7 @@ export const AwardsSection: React.FC = () => {
 
   return (
     <section id="awards" className="py-20 md:py-32 bg-white border-y border-slate-200/60 overflow-hidden">
-      
+
       {/* Top Section Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -192,7 +220,7 @@ export const AwardsSection: React.FC = () => {
       {/* Interactive Loud Sound List: Awards for Digital Innovation */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-[#FAFAFD] rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-xl">
-          
+
           <div className="flex items-center justify-between pb-6 border-b border-slate-200 text-xs font-black text-slate-600 uppercase tracking-wider hidden sm:flex">
             <span className="w-1/4">Institution</span>
             <span className="w-1/3">Project Showcase</span>
@@ -216,17 +244,15 @@ export const AwardsSection: React.FC = () => {
                   }}
                   onMouseLeave={() => setHoveredId(null)}
                   onTouchEnd={() => setHoveredId(null)}
-                  className={`py-5 px-4 sm:px-6 rounded-2xl transition-all duration-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 cursor-pointer ${
-                    isHovered
+                  className={`py-5 px-4 sm:px-6 rounded-2xl transition-all duration-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 cursor-pointer ${isHovered
                       ? 'bg-white shadow-xl shadow-indigo-500/15 border border-indigo-300 scale-[1.01] -translate-y-0.5'
                       : 'hover:bg-white/60'
-                  }`}
+                    }`}
                 >
                   {/* Institution */}
                   <div className="sm:w-1/4 flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-extrabold text-xs transition-colors ${
-                      isHovered ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/30' : 'bg-slate-200/80 text-slate-700'
-                    }`}>
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-extrabold text-xs transition-colors ${isHovered ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/30' : 'bg-slate-200/80 text-slate-700'
+                      }`}>
                       <Trophy className="w-5 h-5" />
                     </div>
                     <span className="font-extrabold text-base text-slate-900">
