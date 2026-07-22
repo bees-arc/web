@@ -38,14 +38,18 @@ export const Preloader: React.FC = () => {
       <div className="flex flex-col items-center gap-4">
         {/* Outcrowd Emblem Preloader Logo Mask */}
         <div className="relative w-20 h-20 flex items-center justify-center">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 animate-spin-slow flex items-center justify-center text-white font-extrabold text-2xl shadow-xl shadow-indigo-500/30 font-display">
-            O
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 animate-spin-slow flex items-center justify-center shadow-xl shadow-indigo-500/30">
+            <img
+              src="/Nav Logo B.webp"
+              alt="Logo"
+              className="w-14 h-10 object-contain"
+            />
           </div>
         </div>
 
         <div className="flex items-center gap-2">
           <span className="font-display font-extrabold text-2xl text-slate-900 tracking-tight">
-            OUTCROWD
+            THEWEBAGENCY
           </span>
           <span className="text-[10px] font-extrabold uppercase tracking-widest text-indigo-600 px-2 py-0.5 rounded-full bg-indigo-50 border border-indigo-100">
             Light Mode

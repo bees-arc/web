@@ -22,11 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookCallClick, onContactClick 
         setScrolled(false);
       }
 
-      if (currentScroll > 150 && currentScroll > lastScroll) {
-        setIsCompact(true);
-      } else {
-        setIsCompact(false);
-      }
+      setIsCompact(false);
       lastScroll = currentScroll;
     };
 
@@ -52,19 +48,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookCallClick, onContactClick 
           {/* Logo */}
           <a
             href="#"
-            className="flex items-center gap-2 group transition-transform duration-300 hover:scale-105"
+            className="flex items-center group transition-transform duration-300 hover:scale-105"
           >
-            <div className="w-8 h-8 md:w-9 md:h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-purple-600 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:rotate-6 transition-transform">
-              <span className="font-bold text-lg font-display tracking-wider">O</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display font-extrabold text-lg md:text-xl text-slate-900 tracking-tight leading-none">
-                OUTCROWD
-              </span>
-              <span className="text-[9px] font-semibold tracking-widest text-indigo-600 uppercase">
-                Light Edition
-              </span>
-            </div>
+            <img
+              src="/Nav Logo B.webp"
+              alt="ThewebAgency Logo"
+              className="w-36 h-8 md:w-40 md:h-9 rounded-xl object-contain shadow-md shadow-slate-900/5 group-hover:rotate-6 transition-transform"
+            />
           </a>
 
           {/* Desktop Links (Hidden when compact scroll) */}
@@ -74,7 +64,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookCallClick, onContactClick 
             }`}
           >
             {[
-              { label: 'Cases', href: '#cases' },
+              { label: 'Stories', href: '#cases' },
               { label: 'Services', href: '#services' },
               { label: 'Stages', href: '#stages' },
               { label: 'Awards', href: '#awards' },
@@ -118,7 +108,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookCallClick, onContactClick 
               className="explode-btn relative flex items-center gap-1.5 px-4 py-2 md:px-5 md:py-2 rounded-full bg-indigo-600 text-white text-xs md:text-sm font-bold shadow-md shadow-indigo-500/25 transition-all duration-300 hover:shadow-indigo-500/40 hover:scale-[1.02]"
             >
               <div
-                className="explode-circle bg-purple-600"
+                className="explode-circle bg-slate-900"
                 style={{
                   left: `${mousePos['contact']?.x || 0}px`,
                   top: `${mousePos['contact']?.y || 0}px`,
@@ -158,11 +148,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookCallClick, onContactClick 
               Navigation
             </span>
             {[
-              { label: 'Cases', href: '#cases' },
+              { label: 'Stories', href: '#cases' },
               { label: 'Services', href: '#services' },
-              { label: 'Stages of Development', href: '#stages' },
+              { label: 'Stages of Growth', href: '#stages' },
               { label: 'Awards & Honours', href: '#awards' },
-              { label: 'Client Reviews', href: '#testimonials' },
+              { label: 'What Clients Say', href: '#testimonials' },
             ].map(link => (
               <a
                 key={link.label}

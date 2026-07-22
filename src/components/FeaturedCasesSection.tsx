@@ -18,44 +18,44 @@ export const FeaturedCasesSection: React.FC = () => {
 
   const cases: CaseItem[] = [
     {
-      id: 'zenith',
-      title: 'Zenith Health AI',
-      category: 'SaaS Platform & Brand Identity',
-      filter: 'saas',
-      metric: '+140% Retention',
-      desc: 'Complete rebrand and next-generation Web App UI for an AI-powered diagnostic healthcare platform.',
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80',
-      deliverables: ['Brand Strategy', 'Web App UI/UX', 'Design System', '3D Motion']
-    },
-    {
-      id: 'finova',
-      title: 'Finova Banking',
-      category: 'FinTech & Mobile App UI/UX',
-      filter: 'fintech',
-      metric: '$50M Raised',
-      desc: 'Modern cross-border digital banking app experience designed for frictionless global transactions.',
+      id: 'nordic',
+      title: 'Nordic Ventures',
+      category: 'Venture Capital & Brand System',
+      filter: 'branding',
+      metric: 'Top Partner Rating',
+      desc: 'Rethinking the online presentation and digital ecosystem for a leading Norwegian venture capital firm.',
       image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80',
-      deliverables: ['Mobile iOS & Android', 'Design Tokens', 'Design System', 'Pitch Deck']
+      deliverables: ['Brand Strategy', 'Web Design', 'Figma Prototypes', 'Investor Pitch']
     },
     {
-      id: 'nexa',
-      title: 'Nexa Cloud Workflows',
-      category: 'Cloud SaaS & Webflow Dev',
-      filter: 'saas',
-      metric: '2.4M Users',
-      desc: 'Interactive visual workflow builder with real-time canvas, custom nodes, and automated triggers.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-      deliverables: ['UX Wireframing', 'React Frontend', 'WebGL Canvas', 'Marketing Site']
-    },
-    {
-      id: 'hyperdrive',
-      title: 'HyperDrive EV Telemetry',
-      category: 'Automotive & IoT Dashboard',
-      filter: 'mobile',
-      metric: 'App of the Day',
-      desc: 'Real-time telemetry dashboard & companion mobile app for connected electric vehicle fleet analytics.',
+      id: 'gulf',
+      title: 'Gulf Manufacturing',
+      category: 'Industrial Enterprise Platform',
+      filter: 'fintech',
+      metric: 'Scale & Quality',
+      desc: 'Custom web platform and digital branding for a premier manufacturing corporation in Dubai.',
       image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
-      deliverables: ['IoT Dashboard UX', 'Mobile App', 'Brand Identity', 'Lottie Animations']
+      deliverables: ['Web Development', 'UI/UX Design', 'Custom CMS', 'API Integration']
+    },
+    {
+      id: 'techlaunch',
+      title: 'TechLaunch US',
+      category: 'SaaS Launch & App Design',
+      filter: 'saas',
+      metric: 'Global Market Ready',
+      desc: 'Complete brand, website, and mobile app design from scratch for a San Francisco SaaS startup.',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
+      deliverables: ['Mobile App', 'Web Design', 'React Native', 'Brand Strategy']
+    },
+    {
+      id: 'eduglobal',
+      title: 'EduGlobal NGO',
+      category: 'NGO Portal & Global Systems',
+      filter: 'mobile',
+      metric: 'Trusted Platform',
+      desc: 'Secure and accessible platform for an international NGO, connecting donors and beneficiaries across India.',
+      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80',
+      deliverables: ['UX Research', 'Web Development', 'Accessibility Audit', 'Growth Marketing']
     }
   ];
 
@@ -64,7 +64,7 @@ export const FeaturedCasesSection: React.FC = () => {
     : cases.filter(item => item.filter === activeFilter);
 
   return (
-    <section id="cases" className="py-20 md:py-32 bg-[#FAFAFD] relative overflow-hidden">
+    <section id="cases" className="py-20 md:py-32 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -75,17 +75,17 @@ export const FeaturedCasesSection: React.FC = () => {
               Selected Portfolio Showcase
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-              Featured Cases
+              Our Stories
             </h2>
           </div>
 
           {/* Filter Pills */}
           <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2">
             {[
-              { label: 'All Cases', value: 'all' },
-              { label: 'SaaS Platforms', value: 'saas' },
-              { label: 'FinTech', value: 'fintech' },
-              { label: 'Mobile Apps', value: 'mobile' },
+              { label: 'All Stories', value: 'all' },
+              { label: 'SaaS & Tech', value: 'saas' },
+              { label: 'Enterprises', value: 'fintech' },
+              { label: 'NGOs & Gov', value: 'mobile' },
             ].map(f => (
               <button
                 key={f.value}

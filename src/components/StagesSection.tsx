@@ -49,7 +49,7 @@ export const StagesSection: React.FC<StagesSectionProps> = ({ onSelectStage }) =
   ];
 
   return (
-    <section id="stages" ref={containerRef} className="py-20 md:py-32 bg-[#FAFAFD] relative overflow-hidden">
+    <section id="stages" ref={containerRef} className="py-20 md:py-32 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
@@ -156,7 +156,7 @@ export const StagesSection: React.FC<StagesSectionProps> = ({ onSelectStage }) =
                     <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white">
                       <div>
                         <span className="text-[10px] font-extrabold uppercase tracking-widest text-indigo-300 block mb-1">
-                          Outcrowd Stage Showcase
+                          ThewebAgency Stage Showcase
                         </span>
                         <h4 className="text-lg font-bold">{stage.badge}</h4>
                       </div>

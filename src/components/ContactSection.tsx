@@ -7,17 +7,18 @@ interface ContactSectionProps {
 }
 
 export const ContactSection: React.FC<ContactSectionProps> = ({ onBookCallClick }) => {
-  const [selectedServices, setSelectedServices] = useState<string[]>(['Product UI/UX']);
+  const [selectedServices, setSelectedServices] = useState<string[]>(['UI/UX Design']);
   const [budget, setBudget] = useState<string>('$25k - $50k');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
 
   const servicesList = [
-    'Branding & Identity',
-    'Product UI/UX',
+    'UI/UX Design',
     'Web Development',
-    '3D & Motion Graphics',
-    'Design System'
+    'Mobile Apps',
+    'Software Engineering',
+    'AI Solutions',
+    'Brand Identity'
   ];
 
   const budgetOptions = ['$10k - $25k', '$25k - $50k', '$50k - $100k', '$100k+'];
@@ -62,13 +63,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onBookCallClick 
             </h2>
 
             <p className="text-base text-slate-600 font-medium mb-8 leading-relaxed">
-              Whether you are an early-stage startup looking for POC validation or an established SaaS scaling design output, we respond within 4 hours.
+              Whether you are a startup, enterprise, or NGO looking to build world-class digital experiences, we respond within 24 hours.
             </p>
 
             {/* Quick Contact Box */}
             <div className="space-y-4 mb-8">
               <a
-                href="mailto:hello@outcrowd.io"
+                href="mailto:hello@thewebagency.lk"
                 className="flex items-center gap-4 p-4 rounded-2xl bg-[#FAFAFD] border border-slate-200/80 hover:border-indigo-300 transition-colors group"
               >
                 <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold group-hover:scale-110 transition-transform">
@@ -76,7 +77,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onBookCallClick 
                 </div>
                 <div>
                   <span className="block text-xs text-slate-500 font-semibold">Direct Email</span>
-                  <span className="text-sm font-extrabold text-slate-900 group-hover:text-indigo-600">hello@outcrowd.io</span>
+                  <span className="text-sm font-extrabold text-slate-900 group-hover:text-indigo-600">hello@thewebagency.lk</span>
                 </div>
               </a>
 
@@ -102,7 +103,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onBookCallClick 
             {/* Location & Timezone */}
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs font-medium text-slate-600 flex items-center gap-2">
               <MapPin className="w-4 h-4 text-indigo-600 shrink-0" />
-              <span>HQ in USA & Europe • Remote team across GMT-5 to GMT+3</span>
+              <span>Based in Colombo, Sri Lanka · Serving Globally</span>
             </div>
           </div>
 
@@ -115,7 +116,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onBookCallClick 
                 </div>
                 <h3 className="text-2xl font-extrabold text-slate-900 mb-2">Message Sent Successfully!</h3>
                 <p className="text-sm text-slate-600 max-w-md mx-auto mb-6">
-                  Thank you for reaching out. A partner from Outcrowd will review your project details and respond within 4 business hours.
+                  Thank you for reaching out. A partner from ThewebAgency will review your project details and respond within 24 hours.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}

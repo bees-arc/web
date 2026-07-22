@@ -1,10 +1,30 @@
 /** @type {import('tailwindcss').Config} */
+import colors from 'tailwindcss/colors';
+
 export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    colors: {
+      // Spread all Tailwind defaults, excluding deprecated aliases
+      ...(({ lightBlue, warmGray, trueGray, coolGray, blueGray, ...rest }) => rest)(colors),
+      // Override indigo fully so no default #4338CA leaks through hover states
+      indigo: {
+        50: '#E6F7FF',
+        100: '#BAE7FF',
+        200: '#7ECBFF',
+        300: '#40A9FF',
+        400: '#1890FF',
+        500: '#00b1f8',
+        600: '#00b1f8',
+        700: '#00b1f8',
+        800: '#008ec7',
+        900: '#006b96',
+        950: '#004764',
+      },
+    },
     extend: {
       colors: {
         outcrowd: {
@@ -15,8 +35,8 @@ export default {
           muted: '#64748B',
           subtle: '#94A3B8',
           border: 'rgba(15, 23, 42, 0.08)',
-          accent: '#6366F1',
-          accentHover: '#4F46E5',
+          accent: '#00b1f8',
+          accentHover: '#008ec7',
           purple: '#8B5CF6',
           violet: '#7C3AED',
           pink: '#EC4899',

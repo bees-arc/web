@@ -15,7 +15,6 @@ import { CalendlyModal } from './components/CalendlyModal';
 
 export function App() {
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
-
   useEffect(() => {
     // Initialize Outcrowd's Lenis Smooth Scroll physics
     const lenis = new Lenis({
@@ -47,7 +46,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFAFD] text-[#0D0F12] font-sans relative selection:bg-indigo-600 selection:text-white">
+    <div className="min-h-screen bg-white text-[#0D0F12] font-sans relative selection:bg-indigo-600 selection:text-white">
       {/* Signature Preloader */}
       <Preloader />
 

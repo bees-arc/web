@@ -8,65 +8,65 @@ export const ServicesSection: React.FC = () => {
     {
       id: 1,
       num: '01',
-      title: 'Branding & Visual Identity',
-      subtitle: 'Stand out with an iconic, memorable brand identity tailored for SaaS and digital products.',
+      title: 'UI/UX Design & Brand Identity',
+      subtitle: 'Interfaces that feel inevitable. Strategy-first branding, visual systems, and guidelines to help you stand out in competitive markets.',
       icon: Compass,
       color: 'from-purple-500 to-indigo-600',
-      badge: 'Brand Strategy',
+      badge: 'Design & Brand',
       deliverables: [
-        'Logo & Visual Identity',
-        'Brand Guidelines & Tone of Voice',
-        'Typography & Color Palette',
-        'Investor Pitch Decks',
-        'Iconography & Design Tokens'
+        'User Journey Mapping',
+        'UI/UX Design & Prototyping',
+        'Design System Architecture',
+        'Brand Logos & Identity',
+        'Visual Guidelines'
       ]
     },
     {
       id: 2,
       num: '02',
-      title: 'Web & Product Design (UI/UX)',
-      subtitle: 'Craft intuitive, high-converting digital product experiences users fall in love with.',
+      title: 'Web & Mobile App Development',
+      subtitle: 'Fast, accessible, and native-quality apps. Built with Next.js, React, React Native, and Flutter for maximum reach and performance.',
       icon: Layout,
       color: 'from-blue-500 to-indigo-600',
-      badge: 'SaaS & App UX',
+      badge: 'Web & Mobile',
       deliverables: [
-        'SaaS Dashboard & Web Apps',
-        'Mobile App UX (iOS & Android)',
-        'Design System Architecture',
-        'Interactive Figma Prototypes',
-        'UX Audit & Conversion Tuning'
+        'React & Next.js Frontends',
+        'iOS & Android Mobile Apps',
+        'API & Systems Architecture',
+        'Cross-Platform Development',
+        'Performance Optimization'
       ]
     },
     {
       id: 3,
       num: '03',
-      title: 'Web Development & Webflow',
-      subtitle: 'Build blazing-fast, responsive, pixel-perfect websites with robust CMS and animations.',
+      title: 'Software Engineering & AI Solutions',
+      subtitle: 'Custom platforms, backend systems, and AI-powered product integrations or workflows that save hours of manual work.',
       icon: Code,
       color: 'from-indigo-500 to-violet-600',
-      badge: 'Frontend & CMS',
+      badge: 'AI & Custom Engineering',
       deliverables: [
-        'React & Next.js Frontend',
-        'Framer & Webflow Development',
-        'Interactive GSAP/Framer Motion',
-        'SEO & Performance Tuning',
-        'CMS Setup & Custom Integrations'
+        'Custom Platform Development',
+        'Database & API Engineering',
+        'AI Chatbots & Integrations',
+        'Workflow Automation',
+        'Intelligent Systems'
       ]
     },
     {
       id: 4,
       num: '04',
-      title: '3D Motion & Growth Marketing',
-      subtitle: 'Capture audience attention with stunning 3D graphics, motion explainers, and marketing collateral.',
+      title: 'Growth Marketing, Video & 3D',
+      subtitle: 'Growth strategies, brand films, product demos, and stunning 3D visuals that capture attention and drive real business outcomes.',
       icon: Sparkles,
       color: 'from-pink-500 to-rose-600',
-      badge: 'Motion & Assets',
+      badge: 'Marketing & Media',
       deliverables: [
-        '3D Product Motion Graphics',
-        'Explainer & Promotional Videos',
-        'High-Converting Landing Pages',
-        'Social & Ad Campaign Creatives',
-        'Interactive WebGL Assets'
+        'SEO & Growth Strategies',
+        'Brand Film & Video Production',
+        '3D Modeling & Animation',
+        'Landing Pages & Copywriting',
+        'Social Media Creatives'
       ]
     }
   ];

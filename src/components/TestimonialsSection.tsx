@@ -7,33 +7,53 @@ export const TestimonialsSection: React.FC = () => {
   const testimonials = [
     {
       id: 1,
-      quote: "Outcrowd completely redefined our visual identity and SaaS platform UI. Their design execution directly enabled us to close a $50M Series B round within 4 months of launch.",
-      name: "Marcus Vance",
-      role: "Founder & CEO",
-      company: "Zenith Health AI",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      quote: "ThewebAgency didn't just build our website — they completely rethought how we present ourselves online. The result exceeded every expectation.",
+      name: "Kristoffer Larsen",
+      role: "CEO",
+      company: "Nordic Ventures · Norway",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
       rating: 5,
-      result: "$50M Series B Closed"
+      result: "Nordic Ventures Launch"
     },
     {
       id: 2,
-      quote: "The level of craftsmanship, speed, and motion detail Outcrowd brought to our mobile banking application was astounding. They operate like a top 1% internal product design team.",
-      name: "Elena Rostova",
-      role: "VP of Product",
-      company: "Finova Banking",
+      quote: "Working with a team in Sri Lanka was seamless. Communication was excellent, delivery was ahead of schedule, and the quality was world-class.",
+      name: "Amira Mohammed",
+      role: "Founder",
+      company: "Gulf Manufacturing · Dubai",
       avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
       rating: 5,
-      result: "+140% Mobile Conversion"
+      result: "Global Scale Project"
     },
     {
       id: 3,
-      quote: "Working with Outcrowd was the single best decision we made for our SaaS MVP. Beautiful UI, intuitive UX, and absolute transparency throughout every sprint.",
-      name: "David Sterling",
-      role: "Co-Founder",
-      company: "Nexa Flow",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      quote: "They built our entire digital presence from scratch — brand, website, and app. It's rare to find a team that can think strategically and execute technically.",
+      name: "James Rodriguez",
+      role: "CTO",
+      company: "TechLaunch · San Francisco",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
       rating: 5,
-      result: "2.4M Active Daily Users"
+      result: "Completed Launch"
+    },
+    {
+      id: 4,
+      quote: "Our NGO needed a platform that donors would trust and beneficiaries could use. ThewebAgency delivered something we're truly proud of.",
+      name: "Sunita Patel",
+      role: "Director",
+      company: "EduGlobal NGO · India",
+      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
+      rating: 5,
+      result: "Trust & Scale"
+    },
+    {
+      id: 5,
+      quote: "The AI automation they built saves us 20+ hours a week. Their ability to turn a business problem into a technical solution is genuinely impressive.",
+      name: "Thomas Nielsen",
+      role: "Operations Lead",
+      company: "Nordic Corp · Oslo",
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
+      rating: 5,
+      result: "20+ Hours Saved"
     }
   ];
 
@@ -46,7 +66,7 @@ export const TestimonialsSection: React.FC = () => {
   };
 
   return (
-    <section id="testimonials" className="py-20 md:py-32 bg-[#FAFAFD] relative overflow-hidden">
+    <section id="testimonials" className="py-20 md:py-32 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header with Clutch Badge */}
@@ -62,10 +82,10 @@ export const TestimonialsSection: React.FC = () => {
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-            What SaaS Founders Say
+            What Clients Say
           </h2>
           <p className="text-base text-slate-600 font-medium">
-            Hear directly from founders and executives who scaled their products with Outcrowd.
+            Hear directly from founders and executives who partnered with ThewebAgency.
           </p>
         </div>
 

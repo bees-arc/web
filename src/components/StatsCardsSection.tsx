@@ -9,7 +9,7 @@ export const StatsCardsSection: React.FC = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const [activeHover, setActiveHover] = useState<number | null>(null);
 
-  const headlineText = "We prove, design, implement, and market your idea with absolute transparency and efficiency in it's core";
+  const headlineText = "We solve business problems through design and technology. Serving clients globally from Sri Lanka.";
   const words = headlineText.split(" ");
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export const StatsCardsSection: React.FC = () => {
         {/* 4 Stats Cards Grid with Exact Outcrowd Lottie Animations */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           
-          {/* Card 1: $300m + Chat Popup image overlay */}
+          {/* Card 1: 50+ Projects Delivered */}
           <div
             onMouseEnter={() => setActiveHover(1)}
             onMouseLeave={() => setActiveHover(null)}
@@ -80,25 +80,25 @@ export const StatsCardsSection: React.FC = () => {
                   className="w-full h-36 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute top-2 right-2 bg-emerald-500 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full shadow-xs">
-                  +$300M FUNDING
+                  50+ PROJECTS
                 </div>
               </div>
 
               <h3 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight mb-3">
-                $300m
+                50+
               </h3>
               <p className="text-xs sm:text-sm font-semibold text-slate-600 leading-relaxed">
-                In funding clients raised owing to our design work
+                Projects delivered to startups, enterprises, and international organizations.
               </p>
             </div>
 
             <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-indigo-600">
-              <span>Investor Pitch Design</span>
-              <span>40+ Startups</span>
+              <span>Enterprise & Scale</span>
+              <span>50+ Deliveries</span>
             </div>
           </div>
 
-          {/* Card 2: 60+ + Exact Outcrowd Webflow Lottie Vidget 13 Animation */}
+          {/* Card 2: 12+ Countries Served */}
           <div
             onMouseEnter={() => setActiveHover(2)}
             onMouseLeave={() => setActiveHover(null)}
@@ -111,7 +111,7 @@ export const StatsCardsSection: React.FC = () => {
             <div className="mb-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">
-                  60+
+                  12+
                 </h3>
 
                 {/* Exact Outcrowd Lottie Widget 13 Animation */}
@@ -122,21 +122,21 @@ export const StatsCardsSection: React.FC = () => {
               </div>
 
               <p className="text-xs sm:text-sm font-semibold text-slate-600 leading-relaxed mt-4">
-                World’s biggest international design awards won
+                Countries served globally, from South Asia to Europe and the United States.
               </p>
             </div>
 
             <div className="pt-3 border-t border-slate-100 flex gap-1.5 flex-wrap">
               <span className="px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 text-[10px] font-bold">
-                ★ Red Dot 2026
+                ★ Global Outreach
               </span>
               <span className="px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-bold">
-                ★ 12x Awwwards
+                ★ 12+ Nations
               </span>
             </div>
           </div>
 
-          {/* Card 3: 100M + Exact Outcrowd Webflow Lottie Vidget 14 Animation */}
+          {/* Card 3: 6 Years In Business */}
           <div
             onMouseEnter={() => setActiveHover(3)}
             onMouseLeave={() => setActiveHover(null)}
@@ -156,19 +156,19 @@ export const StatsCardsSection: React.FC = () => {
               </div>
 
               <h3 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight mb-3">
-                100M
+                6 yr
               </h3>
               <p className="text-xs sm:text-sm font-semibold text-slate-600 leading-relaxed">
-                Active users experiencing our design every day via products we made
+                Successfully operating and growing since our launch in 2020.
               </p>
             </div>
 
             <div className="pt-3 border-t border-slate-100 text-[11px] font-extrabold text-blue-600">
-              Global Scale Products
+              Proven Experience
             </div>
           </div>
 
-          {/* Card 4: 24% + Exact Outcrowd Webflow Lottie Vidget 15 Animation */}
+          {/* Card 4: 1st Place Microsoft Imagine Cup */}
           <div
             onMouseEnter={() => setActiveHover(4)}
             onMouseLeave={() => setActiveHover(null)}
@@ -187,18 +187,18 @@ export const StatsCardsSection: React.FC = () => {
                 />
 
                 <h3 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">
-                  24%
+                  1st
                 </h3>
               </div>
 
               <p className="text-xs sm:text-sm font-semibold text-slate-600 leading-relaxed mt-4">
-                Of total marketing budgets converted into sales with our branding & materials
+                Place winners at the SE Asia regional Microsoft Imagine Cup for tech innovation.
               </p>
             </div>
 
             <div className="pt-3 border-t border-slate-100 text-[11px] font-extrabold text-rose-600 flex items-center justify-between">
-              <span>Conversion ROI</span>
-              <span>+3.4x Growth</span>
+              <span>Imagine Cup Champions</span>
+              <span>1st Place</span>
             </div>
           </div>
 

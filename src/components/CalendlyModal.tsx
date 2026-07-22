@@ -69,7 +69,7 @@ export const CalendlyModal: React.FC<CalendlyModalProps> = ({ isOpen, onClose })
               </div>
               <div>
                 <h3 className="text-xl font-extrabold text-slate-900">Book 15-Min Intro Call</h3>
-                <p className="text-xs text-slate-500 font-medium">With Outcrowd Founding Design Team</p>
+                <p className="text-xs text-slate-500 font-medium">With ThewebAgency Design & Engineering Team</p>
               </div>
             </div>
 

@@ -46,15 +46,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBookCallClick, onCon
   return (
     <section
       ref={heroRef}
-      className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-[#FAFAFD] via-white to-[#F4F4F8]"
+      className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-white"
     >
-      {/* Ambient Radial Background Spheres */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-indigo-200/40 via-purple-200/30 to-pink-200/30 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute top-10 left-10 w-[300px] h-[300px] bg-blue-200/30 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-indigo-200/30 rounded-full blur-3xl pointer-events-none -z-10" />
-
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000006_1px,transparent_1px),linear-gradient(to_bottom,#00000006_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         
@@ -68,7 +61,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBookCallClick, onCon
               5.0 Clutch Rating
               <span className="text-[10px] text-indigo-600 font-semibold">★★★★★</span>
             </div>
-            <p className="text-[11px] text-slate-500 font-medium">Based on 45+ verified client reviews</p>
+            <p className="text-[11px] text-slate-500 font-medium">Based on verified client reviews</p>
           </div>
         </div>
 
@@ -78,10 +71,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBookCallClick, onCon
           </div>
           <div>
             <div className="text-slate-900 font-bold text-xs flex items-center gap-1.5">
-              <span>60+ World Design Awards</span>
-              <span className="px-1.5 py-0.5 rounded bg-purple-100 text-purple-700 text-[9px] font-bold">RED DOT</span>
+              <span>Microsoft Imagine Cup Winner</span>
+              <span className="px-1.5 py-0.5 rounded bg-purple-100 text-purple-700 text-[9px] font-bold">1ST PLACE</span>
             </div>
-            <p className="text-[11px] text-slate-500 font-medium">Awwwards, FWA & Webby Winner</p>
+            <p className="text-[11px] text-slate-500 font-medium">South East Asia Champions</p>
           </div>
         </div>
 
@@ -90,7 +83,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBookCallClick, onCon
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-md border border-slate-200/90 shadow-sm hover:border-indigo-300 transition-colors group cursor-default">
             <div className="w-2 h-2 rounded-full bg-indigo-600 animate-pulse" />
             <span className="text-xs font-bold tracking-wide uppercase text-slate-700">
-              Digital brand design agency
+              Sri Lanka · Global Impact
             </span>
             <Sparkles className="w-3.5 h-3.5 text-indigo-500 group-hover:rotate-12 transition-transform" />
           </div>
@@ -99,16 +92,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBookCallClick, onCon
         {/* Hero Headline */}
         <div className="text-center max-w-4xl mx-auto mb-8">
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.08] mb-6">
-            Design & Brand Acceleration for{' '}
+            Building digital<br />experiences{' '}
             <span className="font-serif italic font-normal text-indigo-600 relative inline-block">
-              SaaS Startups
+              that matter.
               <svg className="absolute -bottom-2 left-0 w-full h-3 text-indigo-300/60" viewBox="0 0 100 20" preserveAspectRatio="none">
                 <path d="M0 15 Q 50 0 100 15" stroke="currentColor" strokeWidth="4" fill="none" />
               </svg>
             </span>
           </h1>
-          <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-            We prove, design, implement, and market digital products with absolute transparency and efficiency at its core.
+          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
+            We help startups, enterprises, and international organizations build powerful digital products. We don't just build websites — we solve business problems through design and technology.
           </p>
         </div>
 
@@ -127,7 +120,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBookCallClick, onCon
             className="px-7 py-3.5 rounded-full bg-white text-slate-800 font-bold text-sm border border-slate-200 shadow-sm hover:border-slate-300 hover:bg-slate-50 transition-all duration-300 flex items-center gap-2"
           >
             <ShieldCheck className="w-4 h-4 text-indigo-600" />
-            <span>Book a 15-Min Intro Call</span>
+            <span>Book a Discovery Call</span>
           </button>
         </div>
 
@@ -149,7 +142,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBookCallClick, onCon
                   <div className="w-3 h-3 rounded-full bg-amber-500/80" />
                   <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
                 </div>
-                <span className="text-slate-400 font-semibold ml-2">outcrowd-showreel-2026.mp4</span>
+                <span className="text-slate-400 font-semibold ml-2">thewebagency-showreel.mp4</span>
               </div>
               <div className="flex items-center gap-3">
                 <button
@@ -177,8 +170,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBookCallClick, onCon
               <div className="absolute bottom-6 left-6 z-10 flex items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-slate-200 shadow-xl">
                 <div className="w-3 h-3 rounded-full bg-emerald-500 animate-ping" />
                 <div>
-                  <span className="block text-xs font-bold text-slate-900">Outcrowd Showreel 2.0</span>
-                  <span className="text-[10px] font-semibold text-slate-500">Over 100M active daily users</span>
+                  <span className="block text-xs font-bold text-slate-900">ThewebAgency Showreel</span>
+                  <span className="text-[10px] font-semibold text-slate-500">Building experiences that matter</span>
                 </div>
               </div>
             </div>

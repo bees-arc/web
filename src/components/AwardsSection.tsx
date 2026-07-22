@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Award, Volume2, VolumeX, ArrowUpRight, Trophy } from 'lucide-react';
+import { Award, ArrowUpRight, Trophy } from 'lucide-react';
 
 interface InnovationAward {
   id: string;
@@ -11,89 +11,110 @@ interface InnovationAward {
 }
 
 export const AwardsSection: React.FC = () => {
-  const [soundEnabled, setSoundEnabled] = useState(true);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   const innovationAwards: InnovationAward[] = [
     {
       id: '1',
-      organization: 'Awwwards',
-      project: 'Fitonist',
-      awardTitle: '★ Site of the Day',
-      date: 'Aug 25, 2024',
+      organization: 'Nordic Ventures',
+      project: 'Digital VC Platform',
+      awardTitle: 'UI/UX & CMS',
+      date: 'Jan 2025',
       badgeColor: 'bg-indigo-50 text-indigo-700 border-indigo-200'
     },
     {
       id: '2',
-      organization: 'Awwwards',
-      project: 'FinanceAble',
-      awardTitle: '★ Honorable Mention',
-      date: 'Mar 06, 2024',
+      organization: 'Gulf Manufacturing',
+      project: 'Industrial ERP Portal',
+      awardTitle: 'Backend & APIs',
+      date: 'May 2023',
       badgeColor: 'bg-purple-50 text-purple-700 border-purple-200'
     },
     {
       id: '3',
-      organization: 'TheFWA',
-      project: 'Deed Delivery',
-      awardTitle: '★ FWA of the Day',
-      date: 'Dec 30, 2023',
+      organization: 'TechLaunch US',
+      project: 'SaaS Mobile App',
+      awardTitle: 'React Native App',
+      date: 'Oct 2024',
       badgeColor: 'bg-rose-50 text-rose-700 border-rose-200'
     },
     {
       id: '4',
-      organization: 'CssDA',
-      project: 'EventBeds',
-      awardTitle: '★ Website of the Day',
-      date: 'Dec 29, 2023',
+      organization: 'EduGlobal NGO',
+      project: 'Beneficiary Portal',
+      awardTitle: 'Next.js Web App',
+      date: 'Mar 2024',
       badgeColor: 'bg-amber-50 text-amber-700 border-amber-200'
     },
     {
       id: '5',
-      organization: 'Awwwards',
-      project: 'Mota',
-      awardTitle: '★ Honorable Mention',
-      date: 'Nov 30, 2023',
-      badgeColor: 'bg-purple-50 text-purple-700 border-purple-200'
-    },
-    {
-      id: '6',
-      organization: 'CssDA',
-      project: 'Dstafin',
-      awardTitle: '★ Website of the Day',
-      date: 'Aug 18, 2023',
+      organization: 'Colombo Startup Hub',
+      project: 'Ecosystem Directory',
+      awardTitle: 'UX & Frontend',
+      date: 'Nov 2024',
       badgeColor: 'bg-teal-50 text-teal-700 border-teal-200'
     },
     {
-      id: '7',
-      organization: 'CssDA',
-      project: 'KMBCH',
-      awardTitle: '★ Website of the Day',
-      date: 'Feb 25, 2023',
+      id: '6',
+      organization: 'Healthtech Asia',
+      project: 'AI Diagnostics Web',
+      awardTitle: 'AI Solutions',
+      date: 'Dec 2024',
       badgeColor: 'bg-blue-50 text-blue-700 border-blue-200'
+    },
+    {
+      id: '7',
+      organization: 'Pacific Hotels Group',
+      project: 'Booking Engine',
+      awardTitle: 'API & UX Design',
+      date: 'Sep 2023',
+      badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200'
+    },
+    {
+      id: '8',
+      organization: 'Island Brands',
+      project: 'Headless E-commerce',
+      awardTitle: 'Headless Commerce',
+      date: 'Jul 2025',
+      badgeColor: 'bg-pink-50 text-pink-700 border-pink-200'
+    },
+    {
+      id: '9',
+      organization: 'Apex Logistics',
+      project: 'Fleet Dispatch System',
+      awardTitle: 'Enterprise Web App',
+      date: 'Aug 2024',
+      badgeColor: 'bg-indigo-50 text-indigo-700 border-indigo-200'
+    },
+    {
+      id: '10',
+      organization: 'Vivid Media Solutions',
+      project: 'Video Streaming Engine',
+      awardTitle: 'Cloud Architecture',
+      date: 'Feb 2025',
+      badgeColor: 'bg-purple-50 text-purple-700 border-purple-200'
     }
   ];
 
   // Loud, crisp audio hover trigger (Volume increased to 0.85)
   const playHoverSound = () => {
-    if (soundEnabled) {
-      try {
-        const audio = new Audio('https://dl.dropboxusercontent.com/s/03lxlbaek2ye22m/click_min.mp3');
-        audio.volume = 0.85; // High volume audio output
-        audio.currentTime = 0;
-        audio.play().catch(() => {});
-      } catch (e) {
-        // Audio error caught
-      }
+    try {
+      const audio = new Audio('https://dl.dropboxusercontent.com/s/03lxlbaek2ye22m/click_min.mp3');
+      audio.volume = 0.85; // High volume audio output
+      audio.currentTime = 0;
+      audio.play().catch(() => {});
+    } catch (e) {
+      // Audio error caught
     }
   };
 
   const marqueeAwards = [
-    { name: 'Red Dot Best Design', year: '2026', org: 'Red Dot Institute' },
-    { name: 'Awwwards Site of the Day', year: '12x Honoree', org: 'Awwwards' },
-    { name: 'FWA of the Month', year: '2025', org: 'FWA International' },
-    { name: '#1 SaaS Agency on Clutch', year: 'Top 1%', org: 'Clutch Leaders' },
-    { name: 'Behance Featured Project', year: '2026', org: 'Adobe Behance' },
-    { name: 'Webby Awards Nominee', year: '2025', org: 'Webby International' },
+    { name: 'Microsoft Imagine Cup Winner', year: '1st Place', org: 'Microsoft' },
+    { name: 'Best UX Design Partner', year: '2024', org: 'Colombo Startup Hub' },
+    { name: 'Outstanding Tech Delivery', year: '2025', org: 'Nordic Ventures' },
+    { name: 'Top Agency on Clutch', year: '5.0 Star', org: 'Clutch Leaders' },
+    { name: 'UI/UX Design Excellence', year: '2023', org: 'Gulf Enterprise' },
+    { name: 'Innovative Tech Agency', year: '2022', org: 'SLASSCOM National' },
   ];
 
   return (
@@ -108,21 +129,9 @@ export const AwardsSection: React.FC = () => {
               Global Excellence
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Awards for digital innovation
+              Recognition & achievements
             </h2>
           </div>
-
-          <button
-            onClick={() => {
-              const nextState = !soundEnabled;
-              setSoundEnabled(nextState);
-              if (nextState) playHoverSound();
-            }}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-900 text-xs font-extrabold hover:bg-indigo-100 transition-colors shadow-xs"
-          >
-            {soundEnabled ? <Volume2 className="w-4 h-4 text-indigo-600 animate-bounce" /> : <VolumeX className="w-4 h-4 text-slate-400" />}
-            <span>Hover Sound: <strong>{soundEnabled ? 'LOUD (85%) 🔊' : 'MUTED 🔇'}</strong></span>
-          </button>
         </div>
       </div>
 
