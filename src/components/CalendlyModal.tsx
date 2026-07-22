@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import { X, Calendar, Clock, CheckCircle2, Video, ArrowRight } from 'lucide-react';
 import confetti from 'canvas-confetti';

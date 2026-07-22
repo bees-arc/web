@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+'use client';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Award, ArrowUpRight, Trophy } from 'lucide-react';
 
 interface InnovationAward {
@@ -12,6 +13,47 @@ interface InnovationAward {
 
 export const AwardsSection: React.FC = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const audioUnlocked = useRef(false);
+
+  // Pre-warm audio on first user gesture so MP3 plays without browser permission prompt
+  useEffect(() => {
+    const unlock = () => {
+      if (audioUnlocked.current) return;
+      audioUnlocked.current = true;
+      // Unlock via silent AudioContext resume
+      if (!audioCtxRef.current) {
+        audioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+      }
+      if (audioCtxRef.current.state === 'suspended') {
+        audioCtxRef.current.resume();
+      }
+      // Also warm up a silent <audio> so subsequent new Audio() calls work
+      const silent = new Audio('https://dl.dropboxusercontent.com/s/03lxlbaek2ye22m/click_min.mp3');
+      silent.volume = 0;
+      silent.play().catch(() => {});
+    };
+    window.addEventListener('touchstart', unlock, { once: true, passive: true });
+    window.addEventListener('click', unlock, { once: true });
+    window.addEventListener('scroll', unlock, { once: true, passive: true });
+    return () => {
+      window.removeEventListener('touchstart', unlock);
+      window.removeEventListener('click', unlock);
+      window.removeEventListener('scroll', unlock);
+    };
+  }, []);
+
+  // Original MP3 hover sound (Volume 0.85)
+  const playHoverSound = useCallback(() => {
+    try {
+      const audio = new Audio('https://dl.dropboxusercontent.com/s/03lxlbaek2ye22m/click_min.mp3');
+      audio.volume = 0.85;
+      audio.currentTime = 0;
+      audio.play().catch(() => {});
+    } catch (e) {
+      // Silent fail
+    }
+  }, []);
 
   const innovationAwards: InnovationAward[] = [
     {
@@ -96,18 +138,6 @@ export const AwardsSection: React.FC = () => {
     }
   ];
 
-  // Loud, crisp audio hover trigger (Volume increased to 0.85)
-  const playHoverSound = () => {
-    try {
-      const audio = new Audio('https://dl.dropboxusercontent.com/s/03lxlbaek2ye22m/click_min.mp3');
-      audio.volume = 0.85; // High volume audio output
-      audio.currentTime = 0;
-      audio.play().catch(() => {});
-    } catch (e) {
-      // Audio error caught
-    }
-  };
-
   const marqueeAwards = [
     { name: 'Microsoft Imagine Cup Winner', year: '1st Place', org: 'Microsoft' },
     { name: 'Best UX Design Partner', year: '2024', org: 'Colombo Startup Hub' },
@@ -142,6 +172,7 @@ export const AwardsSection: React.FC = () => {
             <div
               key={idx}
               onMouseEnter={playHoverSound}
+              onTouchStart={playHoverSound}
               className="flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-[#FAFAFD] border border-slate-200/80 hover:border-indigo-300 hover:bg-indigo-50/40 transition-all cursor-pointer group shrink-0 shadow-sm"
             >
               <Award className="w-5 h-5 text-indigo-600 group-hover:scale-110 transition-transform" />
@@ -179,7 +210,12 @@ export const AwardsSection: React.FC = () => {
                     setHoveredId(award.id);
                     playHoverSound();
                   }}
+                  onTouchStart={() => {
+                    setHoveredId(award.id);
+                    playHoverSound();
+                  }}
                   onMouseLeave={() => setHoveredId(null)}
+                  onTouchEnd={() => setHoveredId(null)}
                   className={`py-5 px-4 sm:px-6 rounded-2xl transition-all duration-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 cursor-pointer ${
                     isHovered
                       ? 'bg-white shadow-xl shadow-indigo-500/15 border border-indigo-300 scale-[1.01] -translate-y-0.5'

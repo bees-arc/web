@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, Pause, Star, Award, TrendingUp, Sparkles, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
 
@@ -9,38 +10,66 @@ interface HeroSectionProps {
 export const HeroSection: React.FC<HeroSectionProps> = ({ onBookCallClick, onContactClick }) => {
   const [isPlaying, setIsPlaying] = useState(true);
   const heroRef = useRef<HTMLDivElement>(null);
-  
-  // Dynamic Scroll Scaling State (Matches Outcrowd's JS formula)
-  const [videoWidth, setVideoWidth] = useState<number>(60); // Percentage 60% -> 100%
-  const [borderRadius, setBorderRadius] = useState<number>(1.7); // vw (1.7vw -> 0vw)
+
+  // Smooth scroll-driven video scaling via rAF + lerp
+  const [videoWidth, setVideoWidth] = useState<number>(60);
+  const [borderRadius, setBorderRadius] = useState<number>(1.7);
+
+  // Refs to hold target values (avoids closure stale state in rAF loop)
+  const targetWidth = useRef(60);
+  const targetRadius = useRef(1.7);
+  const currentWidth = useRef(60);
+  const currentRadius = useRef(1.7);
+  const rafId = useRef<number | null>(null);
 
   useEffect(() => {
+    const startSize = window.innerWidth >= 1920 ? 60 : 54;
+    const endSize = 100;
+    targetWidth.current = startSize;
+    currentWidth.current = startSize;
+
     const handleScroll = () => {
       if (!heroRef.current) return;
       const sectionHeight = heroRef.current.offsetHeight || 1000;
-      const scrollPosition = window.scrollY;
-      const scrollFraction = scrollPosition / sectionHeight;
-
-      const startSize = window.innerWidth >= 1920 ? 60 : 54;
-      const endSize = 100;
+      const scrollFraction = window.scrollY / sectionHeight;
 
       if (scrollFraction <= 0.15) {
-        setVideoWidth(startSize);
-        setBorderRadius(1.7);
-      } else if (scrollFraction > 0.15 && scrollFraction <= 0.38) {
-        const progress = (scrollFraction - 0.15) / 0.23;
-        const newSize = startSize + (endSize - startSize) * progress;
-        const newRadius = 1.7 - 1.7 * progress;
-        setVideoWidth(Math.min(100, Math.max(startSize, newSize)));
-        setBorderRadius(Math.max(0, newRadius));
+        targetWidth.current = startSize;
+        targetRadius.current = 1.7;
+      } else if (scrollFraction <= 0.45) {
+        const progress = (scrollFraction - 0.15) / 0.30;
+        const eased = progress < 0.5
+          ? 2 * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 2) / 2; // easeInOutQuad
+        targetWidth.current = Math.min(100, startSize + (endSize - startSize) * eased);
+        targetRadius.current = Math.max(0, 1.7 * (1 - eased));
       } else {
-        setVideoWidth(100);
-        setBorderRadius(0);
+        targetWidth.current = 100;
+        targetRadius.current = 0;
       }
     };
 
+    // rAF loop — lerp current toward target at 12% per frame (~60fps)
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+    const tick = () => {
+      const lerpFactor = 0.10; // Lower = smoother/lazier
+      currentWidth.current = lerp(currentWidth.current, targetWidth.current, lerpFactor);
+      currentRadius.current = lerp(currentRadius.current, targetRadius.current, lerpFactor);
+
+      // Only trigger re-render when values have meaningfully changed
+      setVideoWidth(+currentWidth.current.toFixed(3));
+      setBorderRadius(+currentRadius.current.toFixed(4));
+
+      rafId.current = requestAnimationFrame(tick);
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    rafId.current = requestAnimationFrame(tick);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId.current) cancelAnimationFrame(rafId.current);
+    };
   }, []);
 
   return (
@@ -130,7 +159,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onBookCallClick, onCon
             style={{
               width: `${videoWidth}%`,
               borderRadius: `${borderRadius}vw`,
-              transition: 'width 0.15s ease-out, border-radius 0.15s ease-out',
             }}
             className="relative overflow-hidden border border-slate-200/80 shadow-2xl bg-slate-950 group"
           >

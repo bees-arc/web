@@ -3,8 +3,9 @@ import colors from 'tailwindcss/colors';
 
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     colors: {
@@ -44,9 +45,9 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
-        display: ['Outfit', 'Lora', 'sans-serif'],
-        serif: ['Lora', 'serif'],
+        sans: ['var(--font-plus-jakarta)', 'Inter', 'sans-serif'],
+        display: ['var(--font-outfit)', 'Lora', 'sans-serif'],
+        serif: ['var(--font-lora)', 'serif'],
       },
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',

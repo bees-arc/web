@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import { Compass, Layout, Code, Sparkles, ArrowUpRight, Check, Plus, Layers } from 'lucide-react';
 
