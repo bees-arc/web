@@ -41,7 +41,7 @@ export const Preloader: React.FC = () => {
         <div className="relative w-20 h-20 flex items-center justify-center">
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 animate-spin-slow flex items-center justify-center shadow-xl shadow-indigo-500/30">
             <img
-              src="/Nav Logo B.webp"
+              src="/Nav Logo.webp"
               alt="Logo"
               className="w-14 h-10 object-contain"
             />

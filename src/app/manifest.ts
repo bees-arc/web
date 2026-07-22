@@ -16,7 +16,7 @@ export default function manifest(): MetadataRoute.Manifest {
         src: '/Frame 5.webp',
         sizes: 'any',
         type: 'image/webp',
-        purpose: 'any maskable',
+        purpose: 'maskable',
       },
     ],
     categories: ['business', 'productivity', 'utilities'],
